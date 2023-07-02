@@ -2,6 +2,29 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import './styles.css';
 
+const skills = [
+	{
+		skill: 'HTML + CSS',
+		color: 'lightgreen',
+	},
+	{
+		skill: 'JavaScript',
+		color: 'yellow',
+	},
+	{
+		skill: 'React',
+		color: 'lightblue',
+	},
+	{
+		skill: 'Git',
+		color: 'orange',
+	},
+	{
+		skill: 'Python',
+		color: 'purple',
+	},
+];
+
 function App() {
 	return (
 		<div className='card'>
@@ -30,19 +53,20 @@ function Intro() {
 function SkillList() {
 	return (
 		<div className='skill-list'>
-			<Skill name='HTML + CSS' style={{ background: 'lightgreen' }} />
-			<Skill name='JavaScript' style={{ background: 'yellow' }} />
-			<Skill name='React' style={{ background: 'lightblue' }} />
-			<Skill name='Git' style={{ background: 'orange' }} />
-			<Skill name='Python' style={{ background: 'purple' }} />
-			<Skill name='Web Design' style={{ background: 'red' }} />
+			{skills.map(skill => (
+				<Skill
+					name={skill.skill}
+					color={skill.color}
+					key={skills.indexOf(skill)}
+				/>
+			))}
 		</div>
 	);
 }
 
 function Skill(props) {
 	return (
-		<div className='skill' style={props.style}>
+		<div className='skill' style={{ background: props.color }}>
 			{props.name}
 		</div>
 	);
